@@ -1,24 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UXw-Ef-vrI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="MSN-00-tIc">
+            <objects>
+                <navigationController id="UXw-Ef-vrI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gE8-bL-INj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iCp-bq-yp9" kind="relationship" relationship="rootViewController" id="598-6p-TPX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRJ-HC-sdv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1690" y="128"/>
+        </scene>
+        <!--Present View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransitionViewController" id="BYZ-38-t0r" customClass="PresentViewController" customModule="How_to_change_the_screen_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X1M-lL-Obr">
+                                <rect key="frame" x="90.5" y="333" width="233" height="230"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFc-e2-xc8">
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="30"/>
+                                        <state key="normal" title="네비게이션 컨트롤러를 이용한 화면전환"/>
+                                        <connections>
+                                            <segue destination="vCV-KC-wIW" kind="show" id="N1H-bb-6aH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He8-Z2-Ns5">
+                                        <rect key="frame" x="0.0" y="50" width="233" height="30"/>
+                                        <state key="normal" title="RootViewController로 이동"/>
+                                        <connections>
+                                            <action selector="changeRootViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="49c-C3-6R3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIY-14-7Yx">
+                                        <rect key="frame" x="0.0" y="100" width="233" height="30"/>
+                                        <state key="normal" title="화면의 일부를 덮는 modal"/>
+                                        <connections>
+                                            <segue destination="vCV-KC-wIW" kind="presentation" id="cy9-x5-yST"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ne-cQW">
+                                        <rect key="frame" x="0.0" y="150" width="233" height="30"/>
+                                        <state key="normal" title="화면의 전체를 덮는 modal"/>
+                                        <connections>
+                                            <segue destination="vCV-KC-wIW" kind="presentation" modalPresentationStyle="fullScreen" id="bOh-y4-hng"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVw-ZN-Ka6">
+                                        <rect key="frame" x="0.0" y="200" width="233" height="30"/>
+                                        <state key="normal" title="새로운 window로 화면전환"/>
+                                        <connections>
+                                            <action selector="changeNewWindow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gCm-zw-ush"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="X1M-lL-Obr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OhC-R9-NxG"/>
+                            <constraint firstItem="X1M-lL-Obr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XBU-eW-p2A"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="pHR-KQ-yIf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="254" y="128"/>
+        </scene>
+        <!--Dismiss View Controller-->
+        <scene sceneID="1eI-Re-bJC">
+            <objects>
+                <viewController id="vCV-KC-wIW" customClass="DismissViewController" customModule="How_to_change_the_screen_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W7b-j2-9Zz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyG-fi-TBb">
+                                <rect key="frame" x="165" y="406" width="85" height="30"/>
+                                <state key="normal" title="modal 내리기"/>
+                                <connections>
+                                    <action selector="dismissModal:" destination="vCV-KC-wIW" eventType="touchUpInside" id="D7h-GO-jUJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="goM-mB-WRs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iyG-fi-TBb" firstAttribute="centerY" secondItem="W7b-j2-9Zz" secondAttribute="centerY" id="KfX-Yg-84I"/>
+                            <constraint firstItem="iyG-fi-TBb" firstAttribute="centerX" secondItem="W7b-j2-9Zz" secondAttribute="centerX" id="UJR-Vz-dK3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ufi-ea-Gxh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4K-5j-CZ9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="128"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="WLs-j5-dou">
+            <objects>
+                <viewController id="iCp-bq-yp9" customClass="StartViewController" customModule="How_to_change_the_screen_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Fd-Pp-tBf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoT-eW-qGH">
+                                <rect key="frame" x="159" y="432.5" width="96" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="화면전환"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="dzw-YO-6nj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Frd-0d-NFj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YoT-eW-qGH" firstAttribute="centerY" secondItem="2Fd-Pp-tBf" secondAttribute="centerY" id="Vk4-Gc-Tr9"/>
+                            <constraint firstItem="YoT-eW-qGH" firstAttribute="width" secondItem="2Fd-Pp-tBf" secondAttribute="width" multiplier="0.231884" id="WRa-KR-HEO"/>
+                            <constraint firstItem="YoT-eW-qGH" firstAttribute="height" secondItem="2Fd-Pp-tBf" secondAttribute="height" multiplier="0.0345982" id="lgX-Hm-DYG"/>
+                            <constraint firstItem="YoT-eW-qGH" firstAttribute="centerX" secondItem="2Fd-Pp-tBf" secondAttribute="centerX" id="xvi-EF-7nL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lZD-tj-sTa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="en6-n6-Fw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784.05797101449286" y="127.90178571428571"/>
+        </scene>
+        <!--New View Controller-->
+        <scene sceneID="TLu-rS-eJw">
+            <objects>
+                <viewController storyboardIdentifier="NewViewController" id="OL0-VU-0Xu" customClass="NewViewController" customModule="How_to_change_the_screen_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0jO-eu-o2F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5jm-0E-Kgo"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9I0-rM-3nD" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272" y="822"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cy9-x5-yST"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
